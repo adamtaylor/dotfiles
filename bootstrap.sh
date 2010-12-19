@@ -1,5 +1,12 @@
 files=("gitconfig" "gitignore" "perldb" "vimrc" "bash_generic" "bashrc" "bash_profile")
 
+echo "This will overwrite any config files, continue? [y/n]";
+read line
+
+if [ "$line" != 'y' ]; then
+    exit 0;
+fi
+
 # copy the config files to their location
 for conf in ${files[@]}; do
     if [ -f ./${conf} ]; then 
