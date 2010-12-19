@@ -1,0 +1,30 @@
+## lazy-shell
+alias gimme='history | grep'
+alias show='ps aux | grep'
+alias RM='rm -rf'
+alias t='prove -lvr'
+
+## perl stuff
+# find the version number of a Perl module
+function pmv {
+   perl -M$1\ 9999
+}
+# make 'mvim Foo::Bar::Baz' work
+function mvim {
+    set -- "${@//:://}"
+    module="lib/${@/%/.pm}"
+    testclass="t/lib/${@/%/.pm}"
+    if [ -f $module ]; then
+        command mvim $module
+    elif [ -f $testclass ]; then
+        command mvim $testclass
+    else
+        command mvim "${@}"
+    fi
+}
+
+## programming language version managers
+# rvm
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+# perlbrew
+[[ -s $HOME/perl5/perlbrew/etc/bashrc ]] && source $HOME/perl5/perlbrew/etc/bashrc

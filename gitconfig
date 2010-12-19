@@ -1,0 +1,15 @@
+[user]
+    name = Adam Taylor
+    email = adamjctaylor@gmail.com 
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = auto
+    interactive = auto
+
+[alias]
+    tree = log --pretty=oneline --topo-order --graph --abbrev-commit --decorate
+    st = status
+    co = checkout

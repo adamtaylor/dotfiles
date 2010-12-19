@@ -1,0 +1,3 @@
+$DB::deep=1000 ;
+sub afterinit { push @DB::typeahead, "{{v"; } ;
+parse_options('dumpDepth=2') ;
