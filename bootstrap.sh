@@ -4,6 +4,8 @@ echo "This will overwrite any config files, continue? [y/n]";
 read line
 
 if [ "$line" != 'y' ]; then
+    echo "didn't install new configs";
+    echo "re-run and hit 'y' if you wanted to install them";
     exit 0;
 fi
 
