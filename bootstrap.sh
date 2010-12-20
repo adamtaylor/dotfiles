@@ -1,4 +1,5 @@
 files=("gitconfig" "gitignore" "perldb" "vimrc" "bash_generic" "bashrc" "bash_profile")
+dotfiles=`pwd`
 
 echo "This will overwrite any config files, continue? [y/n]";
 read line
@@ -10,6 +11,7 @@ if [ "$line" != 'y' ]; then
 fi
 
 # copy the config files to their location
+echo "Installing conf files...";
 for conf in ${files[@]}; do
     if [ -f ./${conf} ]; then 
         echo "[DEBUG] cp ${conf} $HOME/.${conf}";
@@ -18,19 +20,15 @@ for conf in ${files[@]}; do
 done
 
 # link my vim configs
-if [ -d $HOME/.vim ]; then
+echo "Installing VIM files...";
+if [ -s $HOME/.vim ]; then
     echo "[DEBUG] rm -rf $HOME/.vim";
     `rm -rf $HOME/.vim`
 fi
-echo "[DEBUG] mkdir $HOME/.vim";
-`mkdir $HOME/.vim`;
-echo "[DEBUG] mkdir $HOME/.vim/colors";
-`mkdir $HOME/.vim/colors`;
-if [ -f ./vim/colors/molokai.vim ]; then
-    echo "[DEBUG] cp molokai.vim $HOME/.vim/colors/molokai.vim";
-    `cp ./vim/colors/molokai.vim $HOME/.vim/colors/molokai.vim`;
-fi
+echo "[DEBUG] ln -s $dotfiles/vim $HOME/.vim";
+`ln -s $dotfiles/vim $HOME/.vim`;
 
 # link up our gitignore file (don't know how to set $HOME in gitconfig)
+echo "Adding gitignore...";
 echo "[DEBUG] git config --global core.excludesfile ~/.gitignore";
 `git config --global core.excludesfile ~/.gitignore`
