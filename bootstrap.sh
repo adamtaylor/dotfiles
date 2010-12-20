@@ -17,5 +17,20 @@ for conf in ${files[@]}; do
     fi
 done
 
+# link my vim configs
+if [ -d $HOME/.vim ]; then
+    echo "[DEBUG] rm -rf $HOME/.vim";
+    `rm -rf $HOME/.vim`
+fi
+echo "[DEBUG] mkdir $HOME/.vim";
+`mkdir $HOME/.vim`;
+echo "[DEBUG] mkdir $HOME/.vim/colors";
+`mkdir $HOME/.vim/colors`;
+if [ -f ./vim/colors/molokai.vim ]; then
+    echo "[DEBUG] cp molokai.vim $HOME/.vim/colors/molokai.vim";
+    `cp ./vim/colors/molokai.vim $HOME/.vim/colors/molokai.vim`;
+fi
+
 # link up our gitignore file (don't know how to set $HOME in gitconfig)
+echo "[DEBUG] git config --global core.excludesfile ~/.gitignore";
 `git config --global core.excludesfile ~/.gitignore`
