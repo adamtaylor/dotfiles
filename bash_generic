@@ -1,6 +1,7 @@
 ## lazy-shell
-alias gimme='history | grep'
-alias show='ps aux | grep'
+alias gimme='history | grep -v grep | grep'
+alias show='ps aux | grep -v grep | grep'
+alias show='ps aux | grep -v grep | grep -c'
 alias RM='rm -rf'
 alias t='prove -lvr'
 
