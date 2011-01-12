@@ -1,3 +1,7 @@
+## editors
+EDITOR=vim
+export EDITOR
+
 ## lazy-shell
 alias gimme='history | grep -v grep | grep'
 alias show='ps aux | grep -v grep | grep'
