@@ -1,3 +1,11 @@
+## PATH (ripped from rtomayko's bashrc)
+PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin"
+PATH="/usr/local/bin:$PATH"
+
+# put ~/bin on PATH if you have it
+test -d "$HOME/bin" &&
+PATH="$HOME/bin:$PATH"
+
 ## editors
 EDITOR=vim
 export EDITOR
