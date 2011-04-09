@@ -20,6 +20,7 @@ alias count='ps aux | grep -v grep | grep -c'
 alias RM='rm -rf'
 alias t='prove -lvr'
 alias pod='perldoc'
+alias g='git'
 
 ## perl stuff
 # find the version number of a Perl module
