@@ -11,5 +11,10 @@
 
 [alias]
     tree = log --pretty=oneline --topo-order --graph --abbrev-commit --decorate
-    st = status
-    co = checkout
+    s   = status
+    l   = log
+    d   = diff
+    co  = checkout
+    ca  = commit -a
+    cam = commit -a -m
+    caa = commit -a --amend
