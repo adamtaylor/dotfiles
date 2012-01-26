@@ -14,7 +14,10 @@
     s   = status
     l   = log
     d   = diff
+    p   = push
     co  = checkout
     ca  = commit -a
     cam = commit -a -m
     caa = commit -a --amend
+    dryclean   = clean -n -d -x ./
+    forceclean = clean -d -x -f ./
