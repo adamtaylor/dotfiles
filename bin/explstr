@@ -3,11 +3,17 @@
 use strict;
 use warnings;
 
+use Unicode::Normalize;
+use charnames ':full';
+
 die "Usage: explstr <string>" unless $ARGV[0];
 
 my $string = $ARGV[0];
+utf8::decode($string);
 
-# Stolen from/Thanks Pete
+# Normalise the string into the composed characters
+$string = NFC($string);
+
 my @chars = split(//, $string);
 
 my $explain;
@@ -19,8 +25,9 @@ for my $char ( @chars ) {
     } else {
         $explain .= $char;
     }
+    $explain .= ' [' . charnames::viacode($ord) . "]\n";
 }
 
-print $explain . "\n";
+print $explain;
 
 exit(1);
