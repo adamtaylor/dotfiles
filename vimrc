@@ -24,12 +24,33 @@ set listchars=tab:▸\ ,eol:¬
 let mapleader=","
 
 " nice colour scheme
+"set background=dark
 colorscheme molokai
 
-" setup bundles/ for plugins
-filetype off
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+" copied from https://github.com/gmarik/vundle#about
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" all the extra bundle/plugins I want
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+"Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-fugitive'
+Bundle 'vim-perl/vim-perl'
+Bundle 'Valloric/YouCompleteMe'
+
+" non github repos
+Bundle 'git://git.wincent.com/command-t.git'
 
 " apparently this is required for NERDCommenter
 filetype plugin on
+
+" toggle long line highlight
+map <leader>h :match ErrorMsg '\%>80v.\+'
