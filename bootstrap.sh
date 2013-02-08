@@ -15,9 +15,10 @@ echo "Installing utility scripts...";
 if [ -d $HOME/bin ]; then
     echo "[DEBUG] cp $dotfiles/bin/* $HOME/bin/.";
     `cp $dotfiles/bin/* $HOME/bin/.`;
+else
+    echo "[DEBUG] ln -s $dotfiles/bin $HOME/bin";
+    `ln -s $dotfiles/bin $HOME/bin`;
 fi
-echo "[DEBUG] ln -s $dotfiles/bin $HOME/bin";
-`ln -s $dotfiles/bin $HOME/bin`;
 
 # copy the config files to their location
 echo "Installing conf files...";
@@ -29,17 +30,32 @@ for conf in ${files[@]}; do
 done
 
 # link my vim configs
-echo "Installing VIM files...";
+echo "Installing Vim files...";
 if [ -s $HOME/.vim ]; then
     echo "[DEBUG] rm -rf $HOME/.vim";
     `rm -rf $HOME/.vim`
 fi
+
 echo "[DEBUG] ln -s $dotfiles/vim $HOME/.vim";
 `ln -s $dotfiles/vim $HOME/.vim`;
+
+echo "Attempt to install vim plugins? [y/n]";
+read line
+if [ "$line" == 'y' ]; then
+    echo "Installing Vim plugins..."
+    `vim +BundleInstall +qall`
+    if [ -s $HOME/.vim/bundle/YouCompleteMe ]; then
+        echo "Compiling YouCompleteMe plugin..."
+        `cd $HOME/.vim/bundle/YouCompleteMe`
+        `./install.sh`
+    fi
+else
+    echo "Plugins can be installed manually with `vim +BundleInstall +qall`"
+fi
 
 # link up our gitignore file (don't know how to set $HOME in gitconfig)
 echo "Adding gitignore...";
 echo "[DEBUG] git config --global core.excludesfile ~/.gitignore";
 `git config --global core.excludesfile ~/.gitignore`
 
-exit 1;
+exit 0;
