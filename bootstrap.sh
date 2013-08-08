@@ -46,8 +46,7 @@ if [ "$line" == 'y' ]; then
     `vim +BundleInstall +qall`
     if [ -s $HOME/.vim/bundle/YouCompleteMe ]; then
         echo "Compiling YouCompleteMe plugin..."
-        `cd $HOME/.vim/bundle/YouCompleteMe`
-        `./install.sh`
+        exec $HOME/.vim/bundle/YouCompleteMe/install.sh
     fi
 else
     echo "Plugins can be installed manually with `vim +BundleInstall +qall`"
