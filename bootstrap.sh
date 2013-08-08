@@ -49,7 +49,7 @@ if [ "$line" == 'y' ]; then
         exec $HOME/.vim/bundle/YouCompleteMe/install.sh
     fi
 else
-    echo "Plugins can be installed manually with `vim +BundleInstall +qall`"
+    echo "Plugins can be installed manually with <<vim +BundleInstall +qall>>"
 fi
 
 # link up our gitignore file (don't know how to set $HOME in gitconfig)
