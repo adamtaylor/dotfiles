@@ -41,8 +41,13 @@ function mvim {
     fi
 }
 
+# bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
+fi
+# git branch name in prompt
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    export PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
 fi
 
 ## programming language version managers
