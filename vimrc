@@ -41,7 +41,7 @@ Bundle 'gmarik/vundle'
 " all the extra bundle/plugins I want
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-"Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-perl/vim-perl'
 Bundle 'Valloric/YouCompleteMe'
