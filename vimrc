@@ -15,12 +15,14 @@ if (empty($TMUX))
   endif
 endif
 
-
 " syntax highlighting!
 syntax on
 
 " we like line numbers
 set number ruler
+
+" 80 character marker
+set colorcolumn=80
 
 " utf8 everything
 set encoding=utf8
