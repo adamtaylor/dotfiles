@@ -1,3 +1,6 @@
+" syntax highlighting!
+syntax on
+
 " we like line numbers
 set number ruler
 
@@ -56,7 +59,6 @@ filetype plugin on
 map <leader>h :match ErrorMsg '\%>80v.\+'
 
 " fix template toolkit highlighting
-syntax on
 filetype on
 au BufNewFile,BufRead *.ttk set filetype=tt2html
 au BufNewFile,BufRead *.tt set filetype=tt2html
