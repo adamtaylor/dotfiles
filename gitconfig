@@ -21,3 +21,21 @@
     caa = commit -a --amend
     dryclean   = clean -n -d -x ./
     forceclean = clean -d -x -f ./
+
+# Track rebase conflict resolutions for replaying with rerere
+# https://git-scm.com/book/en/v2/Git-Tools-Rerere
+[rerere]
+    enabled = true
+
+# always be rebasing
+[pull]
+    rebase = true
+
+# always be rebasing, even with a dirty working tree...
+[rebase]
+    autoStash = true
+
+[merge]
+    log = true
+    summary = true
+    ff = false
