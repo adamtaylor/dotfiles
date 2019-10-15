@@ -1,4 +1,4 @@
-files=("gitconfig" "gitignore" "perldb" "vimrc" "bash_generic" "bash_work" "bashrc" "bash_profile")
+files=("gitconfig" "gitignore" "git-completion.bash" "perldb" "vimrc" "bash_generic" "bash_work" "bashrc" "bash_profile")
 dotfiles=`pwd`
 
 echo "This will overwrite any config files, continue? [y/n]";
