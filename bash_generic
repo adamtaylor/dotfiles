@@ -1,4 +1,4 @@
-## PATH (ripped from rtomayko's bashrc)
+## PATH ##
 PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin"
 PATH="/usr/local/bin:$PATH"
 
@@ -6,14 +6,14 @@ PATH="/usr/local/bin:$PATH"
 test -d "$HOME/bin" &&
 PATH="$HOME/bin:$PATH"
 
-## editors
+## editors ##
 EDITOR=vim
 export EDITOR
 
-## colours
+## colours ##
 export TERM="xterm-color"
 
-##lazy-shell
+## lazy-shell ##
 alias gimme='history | grep -v grep | grep'
 alias show='ps aux | grep -v grep | grep'
 alias count='ps aux | grep -v grep | grep -c'
@@ -22,7 +22,7 @@ alias t='prove -lvr'
 alias pod='perldoc'
 alias g='git'
 
-## perl stuff
+## perl stuff ##
 # find the version number of a Perl module
 function pmv {
    perl -M$1\ 9999
@@ -41,15 +41,22 @@ function mvim {
     fi
 }
 
-# bash completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-fi
-# git branch name in prompt
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    export PS1='\h:\w\[\033[32m\]$(__git_ps1) \[\033[0m\]$ '
+## programming language version managers ##
+# perlbrew & local::lib
+if [ -s $HOME/perl5/perlbrew/etc/bashrc ] ; then
+    source $HOME/perl5/perlbrew/etc/bashrc
+    PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+    PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+    PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+    PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+    PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 fi
 
-## programming language version managers
-# perlbrew
-[[ -s $HOME/perl5/perlbrew/etc/bashrc ]] && source $HOME/perl5/perlbrew/etc/bashrc
+## git ##
+# git branch name in prompt
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $
+
