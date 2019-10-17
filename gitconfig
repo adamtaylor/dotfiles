@@ -22,6 +22,7 @@
     dryclean   = clean -n -d -x ./
     forceclean = clean -d -x -f ./
     sync = "!f(){ git checkout master && git remote update -p && git pull origin master && git checkout - && git rebase master; };f"¬
+    squash = rebase -i master
 
 # Track rebase conflict resolutions for replaying with rerere
 # https://git-scm.com/book/en/v2/Git-Tools-Rerere
