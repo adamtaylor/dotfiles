@@ -21,8 +21,10 @@
     caa = commit -a --amend
     dryclean   = clean -n -d -x ./
     forceclean = clean -d -x -f ./
-    sync = "!f(){ git checkout master && git remote update -p && git pull origin master && git checkout - && git rebase master; };f"¬
-    squash = rebase -i master
+    sync       = "!f(){ git checkout master && git remote update -p && git pull origin master && git checkout - && git rebase master; };f"¬
+    squash     = rebase -i master
+    merged     = branch --merged
+    delmerged  = "!f(){ git checkout master && git branch --merged | egrep -v 'master' | xargs git branch -d; };f"
 
 # Track rebase conflict resolutions for replaying with rerere
 # https://git-scm.com/book/en/v2/Git-Tools-Rerere
